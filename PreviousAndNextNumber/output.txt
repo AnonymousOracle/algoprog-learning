@@ -1,2 +1,0 @@
-The next number for the number 12 is 13.
-The previous number for the number 12 is 11.
