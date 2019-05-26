@@ -10,12 +10,14 @@ int main() {
     inputFileStream.close();
 
     fstream outputFileStream("output.txt", ios::trunc | ios::out);
-    int iterator = min - 1;
-
-    while (iterator <= (max - 1)) {
-        outputFileStream << ((iterator % 2 == 0) ? (iterator + 2) : (iterator + 1)) << " ";
-        iterator += 2;
+    int lowerThreshold = (min % 2 == 0) ? (min - 2) : (min - 1);
+    
+    int factor = 1;
+    while ((lowerThreshold + 2*factor) <= max) {
+        outputFileStream << (lowerThreshold + 2*factor) << " ";
+        factor++;
     }
+
     outputFileStream.close();
     return 0;
 }
