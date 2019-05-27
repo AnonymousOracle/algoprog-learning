@@ -1,18 +1,29 @@
+#include <fstream>
 #include <iostream>
 
 using namespace std;
 
 int main() {
-    int numberOfValues;
-    cin >> numberOfValues;
+    fstream input("input.txt", ios::in);
+    int numberOfValues = 0;
+    input >> numberOfValues;
 
-    bool isZeroHere = false;
+    bool isZero = false;
     for (int i = 0; i < numberOfValues; i++) {
         int value;
-        cin >> value;
-        isZeroHere = ((value == 0) ? true : false);
+        input >> value;
+        if (value == 0) {
+            isZero = true;
+        }
     }
-
-    cout << ((isZeroHere) ? "YES" : "NO");
+    
+    fstream output("output.txt", ios::out | ios::trunc);
+    if (isZero) {
+        output << "YES";
+    }
+    else {
+        output << "NO";
+    }
+    
     return 0;
 }
